@@ -33,16 +33,16 @@ main = do
             (NetworkTestnet 1097911063)
             (ProtocolMagic (ProtocolMagicId 1097911063) RequiresMagic)
 
-    BL.writeFile "goldens/sl-testnet-addr.bin" addr
-    BL.writeFile "goldens/sl-testnet-tx.bin" signedTx
+    BL.writeFile "goldens/testnet/sl-addr.bin" addr
+    BL.writeFile "goldens/testnet/sl-signedTx.bin" signedTx
 
     (mainnetAddr, mainnetSignedTx) <-
         test
             NetworkMainOrStage
             (ProtocolMagic (ProtocolMagicId 764824073) RequiresMagic)
 
-    BL.writeFile "goldens/sl-mainnet-addr.bin" mainnetAddr
-    BL.writeFile "goldens/sl-testnet-tx.bin" mainnetSignedTx
+    BL.writeFile "goldens/mainnet/sl-addr.bin" mainnetAddr
+    BL.writeFile "goldens/mainnet/sl-signedTx.bin" mainnetSignedTx
 
 test :: NetworkMagic -> ProtocolMagic -> IO (BL.ByteString, BL.ByteString)
 test nm pm = do
