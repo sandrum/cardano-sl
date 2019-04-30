@@ -62,7 +62,7 @@ test nm pm = do
     let shuffle = return -- Don't shuffle outputs
 
     -- Construct a simple tx:
-    let inp = ( TxInUtxo (unsafeHash ("faucetTx" :: BS.ByteString)) 0
+    let inp = ( TxInUtxo (unsafeHash @String "faucetTx") 0
               , TxOutAux $ TxOut addr (Coin 1)
               )
     res <- mkStdTx pm shuffle (const $ Right signer) (NE.fromList [inp]) (NE.fromList [snd inp]) []
